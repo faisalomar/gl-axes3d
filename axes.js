@@ -36,7 +36,7 @@ function Axes(gl) {
   this.tickFont       = [ 'sans-serif', 'sans-serif', 'sans-serif' ]
   this.tickSize       = [ 12, 12, 12 ]
   this.tickAngle      = [ 0, 0, 0 ]
-  this._tickAlign      = [ 'auto', 'auto', 'auto' ]
+  this.tickAlign      = [ 'auto', 'auto', 'auto' ]
   this.tickColor      = [ [0,0,0,1], [0,0,0,1], [0,0,0,1] ]
   this.tickPad        = [ 10, 10, 10 ]
 
@@ -518,14 +518,14 @@ proto.draw = function(params) {
 
       if(this.tickAngle[i] === -3600) {
         this.tickAngle[i] = 0
-        this._tickAlign[i] = 'auto'
+        this.tickAlign[i] = 'auto'
       } else {
-        this._tickAlign[i] = -1
+        this.tickAlign[i] = -1
       }
 
       enableAlign = 1;
 
-      alignOpt = [this._tickAlign[i], hv_ratio, enableAlign]
+      alignOpt = [this.tickAlign[i], hv_ratio, enableAlign]
       if(alignOpt[0] === 'auto') alignOpt[0] = ALIGN_OPTION_AUTO
       else alignOpt[0] = parseInt('' + alignOpt[0])
 
