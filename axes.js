@@ -446,12 +446,12 @@ proto.draw = function(params) {
 
 
     //Draw axis line ticks
-//    if(this.lineTickEnable[i]) {
+    if(this.lineTickEnable[i]) {
       this._lines.drawAxisTicks(i, lineOffset[i].primalOffset, primalMinor, this.lineTickColor[i], this.lineTickWidth[i]*this.pixelRatio)
-//    }
-//    if(this.lineTickMirror[i]) {
+    }
+    if(this.lineTickMirror[i]) {
       this._lines.drawAxisTicks(i, lineOffset[i].mirrorOffset, mirrorMinor, this.lineTickColor[i], this.lineTickWidth[i]*this.pixelRatio)
-//    }
+    }
   }
   this._lines.unbind()
 
