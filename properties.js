@@ -114,12 +114,15 @@ i_loop:
           poly.push(x.slice())
         }
       }
+
+      /*
       for(var j=4; j===4; ++j) { // Note: using only near plane here.
         if(poly.length === 0) {
           continue i_loop
         }
         poly = splitPoly.positive(poly, frustum[j])
       }
+      */
 
       //Loop over vertices of polygon to find extremal points
       for(var j=0; j<poly.length; ++j) {

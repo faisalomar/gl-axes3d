@@ -253,7 +253,6 @@ i_loop:
     this._lines = null
   }
   if(!this._lines) {
-    console.log("this.ticks=", this.ticks);
     this._lines = createLines(this.gl, this.bounds, this.ticks)
   }
 }
