@@ -68,10 +68,10 @@ function axesProperties(axes, camera, width, height, params) {
   var model       = camera.model || identity
   var view        = camera.view || identity
   var projection  = camera.projection || identity
+  var ortho       = camera.ortho || false
   var bounds      = axes.bounds
-  var params      = params || cubeParams(model, view, projection, bounds)
+  var params      = params || cubeParams(model, view, projection, bounds, ortho)
   var axis        = params.axis
-  var edges       = params.edges
 
   m4mul(mvp, view, model)
   m4mul(mvp, projection, mvp)
@@ -115,14 +115,13 @@ i_loop:
         }
       }
 
-      /*
-      for(var j=4; j===4; ++j) { // Note: using only near plane here.
+      var Q = (ortho) ? 5 : 4
+      for(var j=Q; j===Q; ++j) { // Note: using only near plane here (& for ortho we use the far).
         if(poly.length === 0) {
           continue i_loop
         }
         poly = splitPoly.positive(poly, frustum[j])
       }
-      */
 
       //Loop over vertices of polygon to find extremal points
       for(var j=0; j<poly.length; ++j) {
