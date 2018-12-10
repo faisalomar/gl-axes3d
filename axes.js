@@ -253,6 +253,7 @@ i_loop:
     this._lines = null
   }
   if(!this._lines) {
+    console.log("this.ticks=", this.ticks);
     this._lines = createLines(this.gl, this.bounds, this.ticks)
   }
 }
@@ -436,20 +437,22 @@ proto.draw = function(params) {
     var primalMinor = copyVec3(PRIMAL_MINOR, lineOffset[i].primalMinor)
     var mirrorMinor = copyVec3(MIRROR_MINOR, lineOffset[i].mirrorMinor)
     var tickLength  = this.lineTickLength
-    var op = 0
+
     for(var j=0; j<3; ++j) {
       var scaleFactor = pixelScaleF / model[5*j]
       primalMinor[j] *= tickLength[j] * scaleFactor
       mirrorMinor[j] *= tickLength[j] * scaleFactor
     }
 
+
+
     //Draw axis line ticks
-    if(this.lineTickEnable[i]) {
+//    if(this.lineTickEnable[i]) {
       this._lines.drawAxisTicks(i, lineOffset[i].primalOffset, primalMinor, this.lineTickColor[i], this.lineTickWidth[i]*this.pixelRatio)
-    }
-    if(this.lineTickMirror[i]) {
+//    }
+//    if(this.lineTickMirror[i]) {
       this._lines.drawAxisTicks(i, lineOffset[i].mirrorOffset, mirrorMinor, this.lineTickColor[i], this.lineTickWidth[i]*this.pixelRatio)
-    }
+//    }
   }
   this._lines.unbind()
 
